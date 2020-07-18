@@ -1,0 +1,43 @@
+<div>
+    <div class="col-md-4">
+        <app-game-list></app-game-list>
+    </div>
+    <div class="col-md-6">
+        <app-chess-table *ngIf="gameSelected"></app-chess-table>       
+    </div>
+    <div class="col-md-2" *ngIf="gameSelected && amINext(gameSelected)">
+        <button class="btn btn-info" 
+                (click)="onResign()">Resign</button>
+        <button class="btn"
+                [class.btn-dark]="!isDrawOffered()"
+                [class.btn-danger]="isDrawOffered()"
+                (click)="onDrawOffer()">
+                Draw                
+        </button>
+        {{ isDrawOffered() ? 'Draw Offered!!!' : '' }}
+
+        <br>
+        <br>
+        <br>
+        <div *ngIf="gameSelected.drawOffered">
+            <strong><em>A draw offer arraived!</em></strong>
+            <button class="btn btn-warning"
+                    (click)="onAcceptDraw()">Accept draw offer!</button>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <div *ngIf="gameSelected && chessTableLoaded">
+        <strong><em>Move history: </em></strong>
+        <br>
+        <div class="move-history">
+            {{ gameSelected.moveHistory }}
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,7 @@
+<div [ngStyle]="{'width': '60px', 
+                 'min-height': '65px', 
+                 'background-color': getBackgroundColor(),
+                 'border-style': 'solid',
+                 'border-color': getBorderColor() }">
+    <img *ngIf="cell.chessFigure" [src]="getFileName()" alt="">    
+</div> 

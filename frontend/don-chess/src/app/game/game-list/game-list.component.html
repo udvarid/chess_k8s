@@ -1,0 +1,34 @@
+<div *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+</div>        
+<div *ngIf="!isLoading">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" [ngClass]="{'game-nav': activeShown}" (click)="onActiveGames()"><em>Active games</em></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'game-nav': !activeShown}" (click)="onClosedGames()"><em>Closed games</em></a>
+    </li>
+  </ul>
+  <ul class="list-group"> 
+    <a
+      class="list-group-item"
+      style="cursor: pointer"
+      *ngFor="let game of games; let i = index"
+      (click)="onSelect(i)"
+      [ngStyle]="{'background-color':selectedIndex === i ? 'lightgrey' : 'white' }">
+    >
+        <strong>White:</strong> {{ game.userOne.fullName }} vs. 
+        <strong>Black:</strong> {{ game.userTwo.fullName }}
+        <br> 
+        <span *ngIf="activeShown"><strong>Move:  </strong>{{ game.lastMoveId }}</span>
+        <span *ngIf="!activeShown"><strong>Result: </strong>{{ niceResult(game) }}</span>
+     
+        <span class="badge badge-info" *ngIf="amINext(game) && activeShown"> Your Move!</span>
+    
+    </a>
+  </ul>
+
+
+
+</div>

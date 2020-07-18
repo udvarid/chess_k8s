@@ -1,0 +1,13 @@
+1, Backend projekt lebuildelése -> egyenlőre dev context, később prod és ebben már a külső adatbázisra mutatunk
+2, Docker image létrehozása (egy alap Java 8-as/11-es image-el). Itt kell olyan parancs, amikor elindítuk a war file-t
+3, Docker image feltöltése a repomra
+
+4, Frontend projektben npm install
+5, ng build -> itt még nem tiszta, de valószínűleg egy localis portot célozzon, ennek majd utánanézni
+6, Docker image létrehozása (egy alap ngnix imagere építve) Itt nem tudom, hogy kelle külön indítani, vagy ez már alapban indítja
+7, Docker image feltöltése a repomra
+
+8, Később: Postgress image létrehozása és konfigurálása, hogy a backend ezt  használja
+
+9, Helm chart létrehozása, mely ezt a image-t használva 2 pod-ot hoz létre. Itt beállítani a kommunikációt (ingress?)
+10, Helm installálás

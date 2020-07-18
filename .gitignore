@@ -1,0 +1,5 @@
+/frontend/don-chess/dist
+/frontend/don-chess/node_modules
+
+/backend/target
+/backend/.idea

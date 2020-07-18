@@ -1,0 +1,13 @@
+
+BACKEND
+echo elindítom az újat
+nohup java -jar donchess-0.0.1-SNAPSHOT.war &
+
+FRONTEND
+echo production verzio felépítése
+ng build --prod --build-optimizer=false --configuration=production
+
+----ez ki volt kapcsolva---
+#echo ng indítása
+#nohup ng serve --sourceMap=false --host 0.0.0.0 &
+

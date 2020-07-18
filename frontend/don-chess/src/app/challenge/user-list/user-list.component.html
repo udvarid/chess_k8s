@@ -1,0 +1,19 @@
+<strong class="myHead">Users free to challenge</strong>
+<div class="column">
+  <div class="col-xs-5">
+    <hr>
+    <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <ul class="list-group" *ngIf="!isLoading">
+      <button
+        class="btn btn-info"
+        style="cursor: pointer"
+        *ngFor="let user of users; let i = index"
+        (click)="onChallenge(i)"
+      >
+        {{ user.fullName }}
+    </button>
+    </ul>
+  </div>
+</div>

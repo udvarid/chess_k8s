@@ -1,0 +1,42 @@
+<div>
+    <strong *ngIf="tableIsReady">{{ getSelectedGame().userTwo.fullName }}</strong>
+    <div class="chess-container"
+        *ngFor="let row of table; let i = index;">
+        <a class="chess-row"
+            style="cursor: pointer"
+            *ngFor="let cell of row; let j = index;"
+            (click)="onSelectCell(cell)">
+            <app-cell [cell]="cell"></app-cell>
+        </a>    
+    </div> 
+    {{ loaded() }}
+    <strong *ngIf="tableIsReady">{{ getSelectedGame().userOne.fullName }}</strong>
+    <br>  
+</div>
+
+<jw-modal id="promotion-modal">
+
+    <strong>Promote to...</strong>
+    <hr>
+
+    <a (click)="onSelectedQueen()">
+        <img *ngIf="isItWhite()" src="assets/picture/QueenWhite.png" alt="">
+        <img *ngIf="!isItWhite()" src="assets/picture/QueenBlack.png" alt="">
+    </a>
+
+    <a (click)="onSelectedBishop()">
+        <img *ngIf="isItWhite()" src="assets/picture/BishopWhite.png" alt="">
+        <img *ngIf="!isItWhite()" src="assets/picture/BishopBlack.png" alt="">
+    </a>
+
+    <a (click)="onSelectedKnight()">
+        <img *ngIf="isItWhite()" src="assets/picture/KnightWhite.png" alt="">
+        <img *ngIf="!isItWhite()" src="assets/picture/KnightBlack.png" alt="">
+    </a>
+    
+    <a (click)="onSelectedRook()">
+        <img *ngIf="isItWhite()" src="assets/picture/RookWhite.png" alt="">
+        <img *ngIf="!isItWhite()" src="assets/picture/RookBlack.png" alt="">
+    </a>
+            
+</jw-modal>
