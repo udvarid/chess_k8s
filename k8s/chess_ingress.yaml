@@ -10,7 +10,12 @@ spec:
  - host: minikube
    http:
      paths:       
-     - path: /
+     - path: /?(.*)
        backend:
          serviceName: frontend
          servicePort: 4200
+     - path: /api/?(.*)
+       backend:
+         serviceName: backend
+         servicePort: 8080
+         
