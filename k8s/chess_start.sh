@@ -4,6 +4,7 @@ kubectl delete -n chess deployment backend
 kubectl delete -n chess service frontend
 kubectl delete -n chess service backend
 kubectl delete -n chess ingress chess-ingress
+kubectl delete -n chess ingress chess-ingress_be
 
 echo delete namespace
 kubectl delete namespace chess
@@ -16,4 +17,8 @@ kubectl create -f chess_backend.yaml -n chess
 kubectl create -f chess_backend_s.yaml -n chess
 kubectl create -f chess_frontend.yaml -n chess
 kubectl create -f chess_frontend_s.yaml -n chess
+
+echo turn on ingress
 kubectl create -f chess_ingress.yaml -n chess
+kubectl create -f chess_ingress_be.yaml -n chess
+minikube addons enable ingress

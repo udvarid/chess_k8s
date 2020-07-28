@@ -1,19 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: chess-ingress
+  name: chess-ingress-backend
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
  rules:
  - host: minikube
    http:
-     paths:   
-     - path: /?(.*)
+     paths:     
+     - path: /api/?(.*)
        backend:
-         serviceName: frontend
-         servicePort: 4200
-  
-         
+         serviceName: backend
+         servicePort: 8080
