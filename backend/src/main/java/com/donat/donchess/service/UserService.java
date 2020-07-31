@@ -110,11 +110,11 @@ public class UserService implements UserDetailsService {
 
 		Role role = roleRepository.findByRole("ROLE_USER");
 		newUser.getRoles().add(role);
-		newUser.setEnabled(false);
+		newUser.setEnabled(true);
 		newUser.setAuthenticationToken(RandomString.make(20));
 		newUser.setTimeOfRegistration(LocalDateTime.now());
 
-		emailService.sendAuthenticatonMail(newUser);
+		//emailService.sendAuthenticatonMail(newUser);
 
 		userRepository.saveAndFlush(newUser);
 

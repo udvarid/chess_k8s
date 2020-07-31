@@ -1,5 +1,7 @@
 1, postgresst bekapcsolni -> erre külön backup volume (felvenni néhány alap adatot, pl. Role-ok ill. egy admin user)
-2, Postgress belépést secrettel
+2a, Postgress belépést secrettel
+2b, Postgress service név és port configmappel
 https://kubernetes.io/docs/concepts/configuration/secret/
-3, Podból internet elérés (gmail szerver) kipróbálása
+3, Podból internet elérés (gmail szerver) kipróbálása ill. a külső elérést is megadni (lehet, hogy NodePorttal, de itt akkor meg kell oldani, hogy mindig az 
+aktuális NodePort menjen be)
 4, Helmesítés

@@ -14,3 +14,7 @@ spec:
        backend:
          serviceName: backend
          servicePort: 8080
+     - path: /logout/?(.*)
+       backend:
+         serviceName: backend
+         servicePort: 8080         
