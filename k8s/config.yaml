@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chess-config
+  namespace: chess
+data:
+  db.service: postgre
+  db.user: donat
+  db.pw: don-chess-77
+  db.name: donat

@@ -23,4 +23,24 @@ spec:
         ports:
         - name: http
           containerPort: 8080
-
+        env:
+        - name: DB_SERVICE
+          valueFrom:
+            configMapKeyRef:
+              name: chess-config
+              key: db.service
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: chess-config
+              key: db.user
+        - name: DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: chess-config
+              key: db.pw
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: chess-config
+              key: db.name              
