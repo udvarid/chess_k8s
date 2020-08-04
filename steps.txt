@@ -1,11 +1,5 @@
-	
-- a password-ot ezután secrettel adjuk meg és Java-ban ezt encodolni kell
-
 - Helmesítés
-- postgre volume -> erre külön backup volume, ami minikube-ra mutat
-	https://stackoverflow.com/questions/58220484/minikube-mount-postgres-data-folder
-	https://stackoverflow.com/questions/41856108/how-to-solve-permission-trouble-when-running-postgresql-from-minikube
-	Itt azt kellene elérni, hogy:
-		- a minikube egy mappája legyen mountolva a potsgre pod-ra
-		- ill. a laptopom egy lokális mappája legyen mountolva a minikube-ra
-		- a Java-t módosítani, hogy StartingService csak akkor induljon el, ha az adatbázis üres (pl. nincsen a Role tábla feltöltve)
+		
+- hiányzó részek (szerintem outOfScope):
+	- secrettel megoldani a password-öt (vmiért a Java BE oldalon ezt nem tudja jól kezelni)
+	- volume beállítása a DB-hez, hogy a Minikube-ra mutasson ki, onnét meg a local-ra (mivel ez minikube specifikus, nem biztos, hogy érdemes lenne ezen görcsölni)

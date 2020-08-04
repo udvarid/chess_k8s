@@ -31,13 +31,13 @@ spec:
               key: db.service
         - name: DB_USER
           valueFrom:
-            secretKeyRef:
-              name: chess-secret
+            configMapKeyRef:
+              name: chess-config
               key: db.user
         - name: DB_PASSWORD
           valueFrom:
-            secretKeyRef:
-              name: chess-secret
+            configMapKeyRef:
+              name: chess-config
               key: db.pw
         - name: DB_NAME
           valueFrom:

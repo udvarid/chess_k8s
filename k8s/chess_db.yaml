@@ -22,11 +22,11 @@ spec:
         imagePullPolicy: Always
         env:
         - name: POSTGRES_USER
-          value: "donat"        
+          value: "donat"
         - name: POSTGRES_PASSWORD
           value: "don-chess-77"
         - name: POSTGRES_DB
-          value: "donat"          
+          value: "donat"
         ports:
         - name: http
           containerPort: 5432

@@ -6,3 +6,5 @@ metadata:
 data:
   db.service: postgre
   db.name: donat
+  db.user: donat
+  db.pw: don-chess-77

@@ -8,7 +8,6 @@ kubectl delete -n chess service postgre
 kubectl delete -n chess ingress chess-ingress
 kubectl delete -n chess ingress chess-ingress-backend
 kubectl delete -n chess configmap chess-config
-kubectl delete -n chess secret chess-secret
 
 echo delete namespace
 kubectl delete namespace chess
@@ -18,7 +17,6 @@ kubectl create namespace chess
 
 echo create config and secret
 kubectl create -f config.yaml -n chess
-kubectl create -f secret.yaml -n chess
 
 echo create new deployments
 kubectl create -f chess_db.yaml -n chess
