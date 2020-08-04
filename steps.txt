@@ -1,10 +1,5 @@
-- Postgress service név és port configmappel
-	https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/
-	amit config mappel át kell adni a backendnek:
-		- username
-		- password
-		- db name
-		- service name
+	
+- a password-ot ezután secrettel adjuk meg és Java-ban ezt encodolni kell
 
 - Helmesítés
 - postgre volume -> erre külön backup volume, ami minikube-ra mutat
