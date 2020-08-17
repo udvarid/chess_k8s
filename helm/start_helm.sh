@@ -1,3 +1,8 @@
+echo create mounted volume
+sudo minikube ssh
+sudo mkdir /mnt/data
+sudo exit
+
 echo delete previous version
 helm delete chess --namespace chess
 kubectl delete namespace chess

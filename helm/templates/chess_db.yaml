@@ -16,17 +16,24 @@ spec:
         tier: postgre
         track: stable
     spec:
-      containers:
-      - name: postgre
-        image: "postgres:9.3"
-        imagePullPolicy: Always
-        env:
-        - name: POSTGRES_USER
-          value: "donat"
-        - name: POSTGRES_PASSWORD
-          value: "don-chess-77"
-        - name: POSTGRES_DB
-          value: "donat"
-        ports:
-        - name: http
-          containerPort: 5432
+        volumes:
+        - name: chess-pv-storage
+          persistentVolumeClaim:
+             claimName: chess-pv-claim
+        containers:
+        - name: postgre
+          image: "postgres:9.3"
+          imagePullPolicy: Always
+          env:
+          - name: POSTGRES_USER
+            value: "donat"
+          - name: POSTGRES_PASSWORD
+            value: "don-chess-77"
+          - name: POSTGRES_DB
+            value: "donat"
+          ports:
+          - name: http
+            containerPort: 5432
+          volumeMounts:
+          - mountPath: "/var/lib/postgresql/data"
+            name: chess-pv-storage
