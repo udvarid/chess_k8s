@@ -28,11 +28,17 @@ public class StartingService {
 
     @PostConstruct
     void runMe() {
-        createRoles();
+        if (dbIsEmpty()) {
+            createRoles();
 
-        createUser("udvarid@hotmail.com", "1234", "Udvari Donát", "ROLE_ADMIN");
-        createUser("bot@bot.com", "1234", "Stupid Bot", "ROLE_BOT0");
-        createUser("bot2@bot.com", "1234", "Plain Bot", "ROLE_BOT1");
+            createUser("udvarid@hotmail.com", "1234", "Udvari Donát", "ROLE_ADMIN");
+            createUser("bot@bot.com", "1234", "Stupid Bot", "ROLE_BOT0");
+            createUser("bot2@bot.com", "1234", "Plain Bot", "ROLE_BOT1");
+        }
+    }
+
+    private boolean dbIsEmpty() {
+        return roleRepository.findAll().isEmpty() && userRepository.findAll().isEmpty();
     }
 
     private void createUser(String email, String password, String fullName, String desiredRole) {
