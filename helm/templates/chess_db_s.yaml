@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgre
+  name: {{ .Values.db.name }}
 spec:
   selector:
-    app: postgre
-    tier: postgre
+    app: {{ .Values.db.name }}
+    tier: {{ .Values.db.name }}
   ports:
   - protocol: TCP
-    port: 5432
-    targetPort: 5432
+    port: {{ .Values.db.port }}
+    targetPort: {{ .Values.db.port }}

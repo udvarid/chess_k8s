@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+  name: {{ .Values.backend.name }}
 spec:
   selector:
-    app: backend
-    tier: backend
+    app: {{ .Values.backend.name }}
+    tier: {{ .Values.backend.name }}
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: {{ .Values.backend.port }}
+    targetPort: {{ .Values.backend.port }}

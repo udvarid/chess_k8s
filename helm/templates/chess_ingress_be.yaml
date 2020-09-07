@@ -12,9 +12,9 @@ spec:
      paths:     
      - path: /api/?(.*)
        backend:
-         serviceName: backend
-         servicePort: 8080
+         serviceName: {{ .Values.backend.name }}
+         servicePort: {{ .Values.backend.port }}
      - path: /logout/?(.*)
        backend:
-         serviceName: backend
-         servicePort: 8080         
+         serviceName: {{ .Values.backend.name }}
+         servicePort: {{ .Values.backend.port }}         

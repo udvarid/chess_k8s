@@ -1,46 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: {{ .Values.backend.name }}
 spec:
   selector:
     matchLabels:
-      app: backend
-      tier: backend
+      app: {{ .Values.backend.name }}
+      tier: {{ .Values.backend.name }}
       track: stable
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: backend
-        tier: backend
+        app: {{ .Values.backend.name }}
+        tier: {{ .Values.backend.name }}
         track: stable
     spec:
       containers:
-      - name: backend
-        image: "udvaridonat/donat-chess:backend"
-        imagePullPolicy: Always
+      - name: {{ .Values.backend.name }}
+        image: {{ .Values.backend.image }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
         ports:
         - name: http
-          containerPort: 8080
+          containerPort: {{ .Values.backend.port }}
         env:
-        - name: DB_SERVICE
+        - name: {{ .Values.backend.env.db_service.name }}
           valueFrom:
             configMapKeyRef:
-              name: chess-config
-              key: db.service
-        - name: DB_USER
+              name: {{ .Values.backend.env.db_service.source }}
+              key: {{ .Values.backend.env.db_service.key }}
+        - name: {{ .Values.backend.env.db_user.name }}
           valueFrom:
             configMapKeyRef:
-              name: chess-config
-              key: db.user
-        - name: DB_PASSWORD
+              name:  {{ .Values.backend.env.db_user.source }}
+              key:  {{ .Values.backend.env.db_user.key }}
+        - name: {{ .Values.backend.env.db_password.name }}
           valueFrom:
             secretKeyRef:
-              name: chess-secret
-              key: db.pw              
-        - name: DB_NAME
-          valueFrom:
+              name: {{ .Values.backend.env.db_password.source }}
+              key: {{ .Values.backend.env.db_password.key }}             
+        - name: {{ .Values.backend.env.db_name.name }}
+          valueFrom: 
             configMapKeyRef:
-              name: chess-config
-              key: db.name              
+              name: {{ .Values.backend.env.db_name.source }}
+              key: {{ .Values.backend.env.db_name.key }}

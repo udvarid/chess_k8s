@@ -13,7 +13,7 @@ spec:
      paths:   
      - path: /?(.*)
        backend:
-         serviceName: frontend
-         servicePort: 4200
+         serviceName: {{ .Values.frontend.name }}
+         servicePort: {{ .Values.frontend.port }}
   
          

@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: {{ .Values.frontend.name }}
 spec:
   selector:
     matchLabels:
-      app: frontend
-      tier: frontend
+      app: {{ .Values.frontend.name }}
+      tier: {{ .Values.frontend.name }}
       track: stable
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: frontend
-        tier: frontend
+        app: {{ .Values.frontend.name }}
+        tier: {{ .Values.frontend.name }}
         track: stable
     spec:
       containers:
       - name: nginx
-        image: "udvaridonat/donat-chess:frontend"
-        imagePullPolicy: Always
+        image: {{ .Values.frontend.image }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
         ports:
         - name: http
-          containerPort: 4200
+          containerPort: {{ .Values.frontend.port }}

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgre
+  name: {{ .Values.db.name }}
 spec:
   selector:
     matchLabels:
-      app: postgre
-      tier: postgre
+      app: {{ .Values.db.name }}
+      tier: {{ .Values.db.name }}
       track: stable
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
-        app: postgre
-        tier: postgre
+        app: {{ .Values.db.name }}
+        tier: {{ .Values.db.name }}
         track: stable
     spec:
         volumes:
@@ -21,19 +21,19 @@ spec:
           persistentVolumeClaim:
              claimName: chess-pv-claim
         containers:
-        - name: postgre
-          image: "postgres:9.3"
-          imagePullPolicy: Always
+        - name: {{ .Values.db.name }}
+          image: {{ .Values.db.version }}
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           env:
           - name: POSTGRES_USER
-            value: "donat"
+            value: {{ .Values.backend.env.db_user.value}}
           - name: POSTGRES_PASSWORD
-            value: "don-chess-77"
+            value: {{ .Values.backend.env.db_password.value}}
           - name: POSTGRES_DB
-            value: "donat"
+            value: {{ .Values.backend.env.db_name.value}}
           ports:
           - name: http
-            containerPort: 5432
+            containerPort: {{ .Values.db.port }}
           volumeMounts:
-          - mountPath: "/var/lib/postgresql/data"
+          - mountPath: {{ .Values.db.mountPath }}
             name: chess-pv-storage
