@@ -6,6 +6,10 @@ imagePullPolicy: Always
 
 nodePort: 32123
 
+profile: 
+    name: CHESS_PROFILE
+    value: prod
+
 backend:
     name: backend
     image: udvaridonat/donat-chess:backend

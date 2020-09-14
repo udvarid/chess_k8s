@@ -1,3 +1,4 @@
+{{- if eq .Values.profile.value "prod" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,3 +38,4 @@ spec:
           volumeMounts:
           - mountPath: {{ .Values.db.mountPath }}
             name: chess-pv-storage
+{{- end }}

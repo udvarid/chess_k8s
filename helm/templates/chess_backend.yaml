@@ -24,6 +24,8 @@ spec:
         - name: http
           containerPort: {{ .Values.backend.port }}
         env:
+        - name: {{ .Values.profile.name }}
+          value: {{ .Values.profile.value }} 
         - name: {{ .Values.backend.env.db_service.name }}
           valueFrom:
             configMapKeyRef:
