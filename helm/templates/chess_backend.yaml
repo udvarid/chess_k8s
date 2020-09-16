@@ -26,6 +26,7 @@ spec:
         env:
         - name: {{ .Values.profile.name }}
           value: {{ .Values.profile.value }} 
+        {{- if eq .Values.profile.value "prod" }}
         - name: {{ .Values.backend.env.db_service.name }}
           valueFrom:
             configMapKeyRef:
@@ -46,3 +47,4 @@ spec:
             configMapKeyRef:
               name: {{ .Values.backend.env.db_name.source }}
               key: {{ .Values.backend.env.db_name.key }}
+         {{- end }}

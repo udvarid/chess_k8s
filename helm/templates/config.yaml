@@ -1,3 +1,4 @@
+{{- if eq .Values.profile.value "prod" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -7,3 +8,4 @@ data:
   db.service: {{ .Values.backend.env.db_service.value}}
   db.name: {{ .Values.backend.env.db_user.value}}
   db.user: {{ .Values.backend.env.db_name.value}}
+{{- end }}  
