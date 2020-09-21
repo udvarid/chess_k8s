@@ -8,7 +8,7 @@ nodePort: 32123
 
 profile: 
     name: CHESS_PROFILE
-    value: prod
+    withPosgtre: true
 
 backend:
     name: backend

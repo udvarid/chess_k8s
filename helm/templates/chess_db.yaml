@@ -1,4 +1,4 @@
-{{- if eq .Values.profile.value "prod" }}
+{{- if .Values.profile.withPosgtre }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

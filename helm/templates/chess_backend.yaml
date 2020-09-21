@@ -25,8 +25,8 @@ spec:
           containerPort: {{ .Values.backend.port }}
         env:
         - name: {{ .Values.profile.name }}
-          value: {{ .Values.profile.value }} 
-        {{- if eq .Values.profile.value "prod" }}
+          value: {{ include "profile.choosed" . }}
+        {{- if .Values.profile.withPosgtre }}
         - name: {{ .Values.backend.env.db_service.name }}
           valueFrom:
             configMapKeyRef:
